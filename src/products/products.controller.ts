@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { ProductsDTO } from './products.dto';
 import { PrismaService } from 'src/database/prisma.service'
@@ -11,4 +11,9 @@ export class ProductsController {
   async create(@Body() data: ProductsDTO){
     return this.productsService.create(data);
   }
+
+  @Get()
+  async findAll(){{
+    return this.productsService.findAll();
+  }}
 }
