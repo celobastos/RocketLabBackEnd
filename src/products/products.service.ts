@@ -28,4 +28,56 @@ export class ProductsService {
     async findAll(){
         return this.prisma.produtos.findMany();
     }
+
+    async update(id: number, data: ProductsDTO) {
+        const numericId = Number(id);  
+        const hasProd = await this.prisma.produtos.findUnique({
+            where:{
+                id: numericId,  
+            },
+        });
+        if(!hasProd){
+            throw new Error('Produto nao existe');
+        }
+    
+        return await this.prisma.produtos.update({
+            data,
+            where:{
+                id: numericId,  
+            },
+        });
+    }
+    async delete(id: number) {
+        const numericId = Number(id); 
+        const hasProd = await this.prisma.produtos.findUnique({
+            where:{
+                id: numericId, 
+            },
+        });
+        if(!hasProd){
+            throw new Error('Produto nao existe');
+        }
+    
+        return await this.prisma.produtos.delete({
+            where:{
+                id: numericId,  
+            },
+        });
+    }
+    async findOne(id: number) {
+        const numericId = Number(id);
+        const hasProd = await this.prisma.produtos.findUnique({
+          where: {
+            id: numericId,
+          },
+        });
+      
+        if (!hasProd) {
+          throw new Error('Produto nao encontrado');
+        }
+      
+        return hasProd;
+      }
+    
+    
 }
