@@ -32,6 +32,11 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
+  @Post(':id')
+  async purchaseOne(@Param('id') id: number){
+    return this.productsService.purchaseOne(id);
+  }
+
 
 
 }

@@ -3,4 +3,6 @@ export type ProductsDTO = {
     name: string;
     price: number;
     image: string;
+    beenComprado: boolean;
+    disponivelComprado: boolean;
 }

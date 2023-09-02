@@ -78,6 +78,37 @@ export class ProductsService {
       
         return hasProd;
       }
+
+    async purchaseOne(id: number) {
+        const numericId = Number(id);
+        const hasProd = await this.prisma.produtos.findUnique({
+          where: {
+            id: numericId,
+          },
+        });
+
+        if(!hasProd) {
+            throw new Error('Produto nao encontrado');
+        }
+
+        if (!hasProd.disponivelComprado) {
+        
+            throw new Error('Produto não está disponível para compra');
+        }
+
+        const produtoComprado = this.prisma.produtos.update({
+            data:{
+                beenComprado: true,
+                disponivelComprado: false,
+            },
+            where:{
+                id: numericId,  
+            },
+        });
+        console.log('Compra bem-sucedida! Produto atualizado:', produtoComprado);
+
+        return produtoComprado;
+    }
     
     
 }
