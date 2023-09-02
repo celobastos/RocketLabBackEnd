@@ -10,9 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model produtos{
-  id String @id
-  name String
-  preco Int
-  imagem String
+model Produtos {
+  id    Int     @id @default(autoincrement())
+  name  String
+  price Float
+  image String
 }
