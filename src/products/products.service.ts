@@ -93,7 +93,7 @@ export class ProductsService {
 
         if (!hasProd.disponivelComprado) {
         
-            throw new Error('Produto não está disponível para compra');
+            throw new Error('Produto nao está disponível para compra');
         }
 
         const produtoComprado = this.prisma.produtos.update({
