@@ -21,5 +21,5 @@ export class ProductsDTO {
 
   @IsNotEmpty({ message: 'O campo disponivelComprado nao pode estar vazio' })
   @IsBoolean({ message: 'O campo disponivelComprado deve ser um booleano' })
-  disponivelComprado: boolean;
+  disponivelCompra: boolean;
 }

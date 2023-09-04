@@ -91,7 +91,7 @@ export class ProductsService {
             throw new Error('Produto nao encontrado');
         }
 
-        if (!hasProd.disponivelComprado) {
+        if (!hasProd.disponivelCompra) {
         
             throw new Error('Produto nao está disponível para compra');
         }
@@ -99,13 +99,13 @@ export class ProductsService {
         const produtoComprado = this.prisma.produtos.update({
             data:{
                 beenComprado: true,
-                disponivelComprado: false,
+                disponivelCompra: false,
             },
             where:{
                 id: numericId,  
             },
         });
-        console.log('Compra bem-sucedida! Produto atualizado:', produtoComprado);
+        console.log('Compra bem sucedida! Produto atualizado:', produtoComprado);
 
         return produtoComprado;
     }

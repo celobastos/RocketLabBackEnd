@@ -15,6 +15,6 @@ model Produtos {
   name  String
   price Float
   image String
-  beenComprado Boolean @default(true)
-  disponivelComprado Boolean @default(true)
+  beenComprado Boolean @default(false)
+  disponivelCompra Boolean @default(true)
 }
