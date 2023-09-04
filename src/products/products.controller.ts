@@ -37,6 +37,4 @@ export class ProductsController {
     return this.productsService.purchaseOne(id);
   }
 
-
-
 }
